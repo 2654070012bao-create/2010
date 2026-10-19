@@ -1,0 +1,96 @@
+
+const openButton = document.getElementById("openLetter");
+const envelope = document.getElementById("envelope");
+const letter = document.getElementById("letter");
+const letterText = document.getElementById("letterText");
+const heartButton = document.getElementById("heartButton");
+const floatingLayer = document.getElementById("floatingLayer");
+
+
+const message = `Nhân ngày 20/10,ANH muốn gửi đến em
+những lời chúc ngọt ngào nhất.
+
+Anh mong em luôn vui vẻ, bình an và tự tin
+trên con đường mà em lựa chọn.
+
+Cảm ơn em vì đã đến bên anh, vì những nụ cười,
+những câu chuyện nhỏ và những khoảnh khắc
+mà anh luôn muốn lưu giữ.
+
+Anh không hứa mọi ngày đều hoàn hảo,
+nhưng anh sẽ cố gắng để chúng mình luôn
+biết lắng nghe, chia sẻ và yêu thương nhau.
+
+Chúc cô gái của anh có một ngày 20/10 thật đẹp.
+Anh thương em rất nhiều! 💗`;
+
+
+let typingTimer;
+
+function typeText(text) {
+    clearTimeout(typingTimer);
+    letterText.textContent = "";
+
+    let index = 0;
+
+    function typeNext() {
+        if (index < text.length) {
+            letterText.textContent += text[index];
+            index++;
+
+            typingTimer = setTimeout(typeNext, 35);
+        }
+    }
+
+    typeNext();
+}
+
+
+function openLetter() {
+    letter.classList.add("open");
+    letter.setAttribute("aria-hidden", "false");
+    envelope.style.display = "none";
+    openButton.textContent = "Thư dành riêng cho em 💗";
+
+    typeText(message);
+
+    letter.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+openButton.addEventListener("click", openLetter);
+envelope.addEventListener("click", openLetter);
+
+
+function createFloatingItem() {
+    const item = document.createElement("span");
+    const symbols = ["💗", "💕", "🌸", "🌷", "♡"];
+
+    item.className = "floating-item";
+    item.textContent =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.fontSize = (16 + Math.random() * 20) + "px";
+    item.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+    floatingLayer.appendChild(item);
+
+    item.addEventListener("animationend", () => {
+        item.remove();
+    });
+}
+
+
+setInterval(createFloatingItem, 700);
+
+
+heartButton.addEventListener("click", () => {
+    for (let i = 0; i < 15; i++) {
+        setTimeout(createFloatingItem, i * 100);
+    }
+
+    heartButton.textContent = "Anh gửi em thật nhiều yêu thương! 💖";
+});

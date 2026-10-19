@@ -1,0 +1,310 @@
+
+:root {
+    --pink: #e879a9;
+    --dark-pink: #bc477c;
+    --light-pink: #fff0f6;
+    --cream: #fffaf5;
+    --text: #6f4057;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background: linear-gradient(
+        180deg,
+        #fff0f6 0%,
+        #fff9f6 50%,
+        #ffe8f0 100%
+    );
+    overflow-x: hidden;
+}
+
+button {
+    font: inherit;
+}
+
+.hero {
+    min-height: 480px;
+    padding: 90px 20px 55px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.eyebrow {
+    color: var(--dark-pink);
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+h1 {
+    max-width: 850px;
+    margin: 15px 0;
+    color: var(--dark-pink);
+    font-family: Georgia, serif;
+    font-size: clamp(34px, 6vw, 60px);
+}
+
+.subtitle {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.flower {
+    margin: 15px 0;
+    font-size: 48px;
+    animation: sway 2s ease-in-out infinite alternate;
+}
+
+.main-button {
+    border: none;
+    border-radius: 30px;
+    padding: 15px 25px;
+    color: white;
+    background: linear-gradient(135deg, #ed91b8, #d85b94);
+    box-shadow: 0 8px 20px #e879a944;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.main-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px #e879a966;
+}
+
+.letter-section {
+    position: relative;
+    padding: 35px 20px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.envelope {
+    position: relative;
+    width: 220px;
+    height: 145px;
+    border-radius: 8px;
+    background: #f3a8c6;
+    box-shadow: 0 15px 30px #9f426122;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.envelope:hover {
+    transform: translateY(-5px);
+}
+
+.envelope-flap {
+    position: absolute;
+    inset: 0;
+    background: #e987b1;
+    clip-path: polygon(0 0, 100% 0, 50% 65%);
+}
+
+.envelope-heart {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 34px;
+}
+
+.letter {
+    display: none;
+    width: min(100%, 650px);
+    margin-top: 30px;
+    padding: clamp(25px, 5vw, 50px);
+    border: 1px solid #f5d3e0;
+    border-radius: 18px;
+    background: #fffdfb;
+    box-shadow: 0 15px 45px #9f426118;
+    line-height: 1.9;
+    animation: appear 0.8s ease both;
+}
+
+.letter.open {
+    display: block;
+}
+
+.letter-date {
+    text-align: right;
+    color: var(--pink);
+    font-style: italic;
+}
+
+.letter h2,
+.gallery-section h2,
+.wish-card h2 {
+    color: var(--dark-pink);
+    font-family: Georgia, serif;
+}
+
+.signature {
+    margin-top: 30px;
+}
+
+.gallery-section {
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.gallery-section h2 {
+    font-size: clamp(25px, 4vw, 38px);
+}
+
+.section-description {
+    margin-bottom: 35px;
+}
+
+.gallery {
+    width: min(100%, 1000px);
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.photo-card {
+    margin: 0;
+    padding: 12px 12px 20px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px #9f42611a;
+    transform: rotate(-1deg);
+    transition: transform 0.3s;
+}
+
+.photo-card:nth-child(2) {
+    transform: rotate(1.5deg);
+}
+
+.photo-card:hover {
+    transform: translateY(-7px) rotate(0);
+}
+
+.photo-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 9px;
+    background: #ffe0ed;
+}
+
+.photo-card figcaption {
+    padding-top: 15px;
+    font-family: Georgia, serif;
+}
+
+.wish-section {
+    padding: 50px 20px 90px;
+}
+
+.wish-card {
+    width: min(100%, 700px);
+    margin: auto;
+    padding: 40px 30px;
+    border: 1px solid #f7d5e3;
+    border-radius: 25px;
+    background: #ffffffb8;
+    text-align: center;
+    box-shadow: 0 15px 40px #9f426114;
+}
+
+.wish-card p {
+    line-height: 1.9;
+}
+
+.big-heart {
+    font-size: 60px;
+    animation: heartbeat 1.2s infinite;
+}
+
+footer {
+    padding: 30px 15px;
+    text-align: center;
+    background: #f9dce8;
+    font-size: 13px;
+}
+
+.floating-layer {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.floating-item {
+    position: absolute;
+    bottom: -50px;
+    animation: floatUp linear forwards;
+    opacity: 0.8;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) rotate(0);
+        opacity: 0.8;
+    }
+    to {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+@keyframes sway {
+    from { transform: rotate(-8deg); }
+    to { transform: rotate(8deg); }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 650px) {
+    .hero {
+        min-height: 400px;
+        padding-top: 65px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+    }
+
+    .photo-card,
+    .photo-card:nth-child(2) {
+        transform: none;
+    }
+
+    .letter {
+        padding: 25px;
+    }
+}
